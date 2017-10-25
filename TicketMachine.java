@@ -41,17 +41,17 @@ public class TicketMachine
      */
     public int emptyMachine()
     {
+        int actualMoney;
         if (balance == 0) {
-            int actualMoney;
             actualMoney = balance + total;
             balance = 0;
             total = 0;
-            return actualMoney;
         }
         else {
             System.out.println ("No se puede vaciar la maquina porque hay una operación en curso.");
-            return -1;
+            actualMoney = -1;
         }
+        return actualMoney;
     }
 
     /**

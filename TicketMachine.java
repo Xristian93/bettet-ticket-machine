@@ -37,6 +37,18 @@ public class TicketMachine
     }
 
     /**
+     * Empty the money of the ticket machine
+     */
+    public int emptyMachine()
+    {
+        int actualMoney;
+        actualMoney = balance + total;
+        balance = 0;
+        total = 0;
+        return actualMoney;
+    }
+
+    /**
      * Return The amount of money already inserted for the
      * next ticket.
      */
@@ -55,6 +67,7 @@ public class TicketMachine
             balance = balance + amount;
         }
         else {
+
             System.out.println("Use a positive amount rather than: " +
                                amount);
         }

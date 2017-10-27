@@ -94,7 +94,7 @@ public class TicketMachine
      */
     public void printTicket()
     {
-        if(balance >= price){
+        if(balance >= price & maxTicket > 0){
             if(gift == false) {
                 // Simulate the printing of a ticket.
                 System.out.println("##################");

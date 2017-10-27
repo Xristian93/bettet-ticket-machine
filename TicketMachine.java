@@ -19,16 +19,19 @@ public class TicketMachine
     private int total;
     // The gift ticket
     private boolean gift;
+    // The amount of tickets you want
+    private int maxTicket;
 
     /**
      * Create a machine that issues tickets of the given price and also a gift ticket.
      */
-    public TicketMachine(int cost, boolean machineGift)
+    public TicketMachine(int cost, boolean machineGift, int numTicket)
     {
         price = cost;
         balance = 0;
         total = 0;
         gift = machineGift;
+        maxTicket = numTicket;
     }
 
     /**
@@ -71,8 +74,11 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
-        if(amount > 0) {
+        if(amount > 0 & maxTicket > 0) {
             balance = balance + amount;
+        }
+        else if (maxTicket == 0){
+            System.out.println("You cannot insert money because you have sell all the tickets");
         }
         else {
 
@@ -102,6 +108,8 @@ public class TicketMachine
                 total = total + price;
                 // Reduce the balance by the prince.
                 balance = balance - price;
+                // Reduce the number of tickets allowed
+                maxTicket -= 1;
             }
             else if (gift == true) {
                 // Simulate the printing of a ticket.
@@ -111,9 +119,11 @@ public class TicketMachine
                 System.out.println("# " + price + " cents.");
                 System.out.println("##################");
                 System.out.println();
-
+                
+                System.out.println("##################");
                 // Simulate the printing of a gift ticket
                 System.out.println("This ticket is a special gift ticket!!");
+                System.out.println("##################");
 
                 // Update the total collected with the price.
                 total = total + price;
